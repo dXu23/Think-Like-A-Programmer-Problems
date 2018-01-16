@@ -91,7 +91,7 @@ int binToDecimal(char * bin) {
     return num;
 }
 
-/*
+/* Function to be deleted
 binDecConversion() {
     int choice = 0;
     int result;
@@ -142,7 +142,7 @@ int main() {
     X(5);
 
     // Problem 5
-    cout << "\n\n Problem 5:\n\n";
+    cout << "\n\nProblem 5:\n\n";
     
     // Problem 6
     cout << "\n\nProblem 6: Please enter a decimal to be converted to binary: ";
