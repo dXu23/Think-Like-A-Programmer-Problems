@@ -129,15 +129,42 @@ char convertNum(int num, int base) {
 */
 
 int main() {
-    // Problem 1
+    // Problem 1: Using only single-character output statements that output a hash mark, a
+    // space, or an end-of-line, write a program that produces the following shape
+    //
+    // ########
+    //  ######
+    //   ####
+    //    ##
+  
     cout << "Problem 1:\n\n";
     icicle(8);
     
-    // Problem 2
+    // Problem 2: Or how about:
+    //
+    //    ##
+    //   ####
+    //  ######
+    // ########
+    // ########
+    //  ######
+    //   ####
+    //    ##
+    
     cout << "\n\nProblem 2:\n\n";
     reflection(8);
     
-    // Problem 3
+    // Problem 3: Here's an especially tricky one:
+    //
+    // #            #
+    //  ##        ##
+    //   ###    ###
+    //    ########
+    //    ########
+    //   ###    ###
+    //  ##        ##
+    // #            #
+    
     cout << "\n\n Problem 3:\n\n";
     X(5);
 
