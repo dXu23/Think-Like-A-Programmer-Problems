@@ -82,10 +82,10 @@ int binToDecimal(char * bin) {
     int num = 0;
     int i = 0;
     while (bin[i] != '\0') {
-	cout << bin[i] << endl;
-	cout << bin[i] - '0' << endl;
+      //cout << bin[i] << endl;
+        //cout << bin[i] - '0' << endl;
 	num = 2 * num + (bin[i] - '0');
-	cout << num << endl;
+	//cout << num << endl;
 	i++;
     }
     return num;
@@ -130,18 +130,28 @@ char convertNum(int num, int base) {
 
 int main() {
     // Problem 1
-    cout << "Problem 1:\n";
+    cout << "Problem 1:\n\n";
     icicle(8);
+    
     // Problem 2
-    cout << "Problem 2:\n";
+    cout << "\n\nProblem 2:\n\n";
     reflection(8);
+    
     // Problem 3
-    cout << "Problem 3:\n";
+    cout << "\n\n Problem 3:\n\n";
     X(5);
+
+    // Problem 5
+    cout << "\n\n Problem 5:\n\n";
+    
     // Problem 6
-    cout << "Problem 6:\n";
-    decimalToBin(78);
-    char binNum[] = "0110100010101";
+    cout << "\n\nProblem 6: Please enter a decimal to be converted to binary: ";
+    int number;
+    cin >> number;
+    decimalToBin(number);
+    cout << "\n\nNow please enter a binary number: ";
+    char binNum[32];
+    cin >> binNum;
     cout << binToDecimal(binNum);
     cout << endl;
     return 0;
