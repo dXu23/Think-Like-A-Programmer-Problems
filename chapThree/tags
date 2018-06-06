@@ -1,0 +1,18 @@
+Magent.cpp	agent.cpp	/^int main() {$/
+Mcipher.cpp	cipher.cpp	/^int main() {$/
+MisSorted.cpp	isSorted.cpp	/^int main() {$/
+Mstudent.cpp	student.cpp	/^int main() {$/
+arrayMedian	agent.cpp	/^double arrayMedian(int intArray[], int ARRAY_SIZE)/
+average	student.cpp	/^int average(student studentArr[], int size) {$/
+compareByGrade	student.cpp	/^int compareByGrade( const void * studentA, const v/
+compareByStudentID	student.cpp	/^int compareByStudentID( const void * studentA, con/
+compareFunc	agent.cpp	/^int compareFunc(const void * voidA, const void * v/
+decode	cipher.cpp	/^char * decode(char * cipher, int cipherSize, const/
+encode	cipher.cpp	/^char * encode(char * message, int msgSize, const c/
+firstQuartile	student.cpp	/^int firstQuartile(student studentArr[], int size) /
+isSorted	isSorted.cpp	/^bool isSorted(void * arr, int size, size_t structS/
+lastQuartile	student.cpp	/^int lastQuartile(student studentArr[], int size) {/
+maximum	student.cpp	/^int maximum(student studentArr[], int size) {$/
+minimum	student.cpp	/^int minimum(student studentArr[], int size) {$/
+printStudentArr	student.cpp	/^void printStudentArr(student studentArr[], int siz/
+student	student.cpp	/^struct student {$/
