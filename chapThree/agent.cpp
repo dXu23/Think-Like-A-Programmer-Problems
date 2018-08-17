@@ -1,4 +1,5 @@
 #include <iostream>
+#include "usefulArrayFunc.h"
 using namespace::std;
 
 const int NUM_AGENTS = 3;
@@ -10,12 +11,6 @@ int sales[NUM_AGENTS][NUM_MONTHS] = {
     {23, 55, 67, 99, 265, 376, 232, 223, 4546, 564, 4544, 3434}
 };
 
-int compareFunc(const void * voidA, const void * voidB) {
-    int * intA = (int *) (voidA);
-    int * intB = (int *) (voidB);
-    return *intA - *intB;
-}
-
 /*
 double arrayMedian2(int intArray[], int ARRAY_SIZE) {
     int median;
@@ -25,19 +20,6 @@ double arrayMedian2(int intArray[], int ARRAY_SIZE) {
         median = intArray[i];
     }
 */
-
-double arrayMedian(int intArray[], int ARRAY_SIZE) {
-    int sortedCopy[ARRAY_SIZE];
-    for (int i = 0; i < ARRAY_SIZE; i++) {
-        sortedCopy[i] = intArray[i];
-    }
-    qsort(sortedCopy, ARRAY_SIZE, sizeof(int), compareFunc);
-    if (ARRAY_SIZE % 2 == 0) {
-        return (sortedCopy[ARRAY_SIZE / 2] + sortedCopy[ARRAY_SIZE / 2 - 1]) / 2;
-    } else {
-        return sortedCopy[ARRAY_SIZE / 2];
-    }
-}
 
 int main() {
     double highestMedian = arrayMedian(sales[0], 12);

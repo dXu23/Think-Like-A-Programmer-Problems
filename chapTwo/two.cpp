@@ -64,8 +64,32 @@ void X(int bound) {
     }
 }
 
+bool valid_isbn(char num[13]) {
+    int sum = 0;
+    int digit;
+    for (int i = 0; i < 13; i++) {
+        digit = num[i] - 0x30;
+        if (digit < 0 || digit > 9) {
+            cout << "Invalid number" << endl;
+            return false;
+        }
+        if (i%2 == 0) {
+            sum = sum + (num[i] - 0x30);
+        }
+        else {
+            sum = sum + 3 * (num[i] - 0x30);
+        }
+    }
+    if (sum % 10 == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 void _decimalToBin(int num) {
     if (num == 0) {
+        return;
 	return;
     }
     int digit = num % 2;
@@ -89,6 +113,57 @@ int binToDecimal(char * bin) {
 	i++;
     }
     return num;
+}
+
+
+int convertCharToDigit(char c) {
+    if (c >= '0' && c <= '9') {
+        return c - '0';
+    } else if (c >= 'A' && c <= 'F') {
+        return c - '7';
+    } else {
+        return -1;
+    }
+}
+
+char convertDigitToChar(int num) {
+    if (num >= 0 && num <= 9) {
+        return (char) (num + '0');
+    } else if (num >= 10 && num <= 15) {
+        return (char) (num + '7');
+    } else {
+        return '\0';
+    }
+}
+
+int anyBaseToDecimal(char * numInput, int base) {
+    int numOutput = 0; 
+    int digit;
+    int i = 0;
+    while (numInput[i] != '\0') {
+        digit = convertCharToDigit(numInput[i]);
+        if (digit != -1) {
+            numOutput = base * numOutput + (convertCharToDigit(numInput[i]));
+        } else {
+            return -1;
+        }
+        i++;
+    }
+    return numOutput;
+}
+
+void decimalToAnyBase(int num, int base) {
+    if (num == 0) {
+        return;
+    }
+    char digit = convertDigitToChar(num % base);
+    decimalToAnyBase(num / base, base);
+    cout << digit;
+}
+
+void baseToBase(char * num1, int base1, int base2) {
+    int decNum = anyBaseToDecimal(num1, base);
+    decimalToAnyBase(decNum, base2);
 }
 
 /* Function to be deleted
@@ -119,16 +194,7 @@ char digitHelper(int num) {
     }
 }
 
-/*
-char convertNum(int num, int base) {
-    if (num == 0) {
-	return;
-    }
-    int digit = num % 2;
-    _decimalToBin(num / 2);
-    cout << digit;
-}
-*/
+convertCharToDigit(char c)
 
 int main() {
     // Problem 1: Using only single-character output statements that output a hash mark, a
@@ -171,7 +237,14 @@ int main() {
     X(5);
 
     // Problem 5
-    cout << "\n\nProblem 5:\n\n";
+    cout << "\n\nProblem 5: Please enter a 13-digit ISBN number\n\n";
+    char isbnNumber[13];
+    cin >> isbnNumber;
+    if (valid_isbn(isbnNumber)) {
+        cout << "The number was valid." << endl;
+    } else {
+        cout << "The number was invalid!\n" << endl;
+    }
     
     // Problem 6
     cout << "\n\nProblem 6: Please enter a decimal to be converted to binary: ";
