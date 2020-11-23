@@ -1,96 +1,95 @@
 #include <iostream>
 using namespace::std;
 
-void _refHelper(int i, int bound) {
-    int spaces = (bound - i ) / 2;
-    for (int k = 0; k < spaces; k++) {
-	cout << " ";
+void _refHelper(unsigned int i, int bound) {
+    unsigned int j, k, spaces = (bound - i ) / 2;
+    for (k = 0; k < spaces; k++) {
+        cout << " ";
     }
-    for (int j = 0; j < i; j++) {
-	cout << "#";
+    for (j = 0; j < i; j++) {
+        cout << "#";
     }
-    for (int k = 0; k < spaces; k++) {
-	cout << " ";
-    }
-    cout << endl;
-}
-
-void icicle(int num) {
-    for (int i = num; i > 0; i -=2) {
-	_refHelper(i, num);
-    }
-}
-
-void reflection(int num) {
-    for (int i = 0; i < num; i +=2) {
-	_refHelper(i, num);
-    }
-    for (int i = 0; i < num; i++) {
-	cout << "#";
-    }
-    cout << endl;
-    for (int i = num; i > 0; i -=2) {
-	_refHelper(i, num);
-    }
-}
-
-void _xHelper(int i, int bound) {
-    int spaces = 4 * (bound - 1) - 4 * i;
-    for (int j = 0; j < i - 1; j++) {
-	cout << " ";
-    }
-    for (int j = 0; j < i; j++) {
-	cout << "#";
-    }
-    for (int j = 0; j < spaces; j++) {
-	cout << " ";
-    }
-    for (int j = 0; j < i; j++) {
-	cout << "#";
-    }
-    for (int j = 0; j < i - 1; j++) {
-	cout << " ";
+    for (k = 0; k < spaces; k++) {
+        cout << " ";
     }
     cout << endl;
 }
 
-void X(int bound) {
-    for (int i = 0; i < bound; i++) {
-	_xHelper(i, bound);
+void icicle(unsigned int num) {
+    for (unsigned int i = num; i > 0; i -=2) {
+        _refHelper(i, num);
     }
-    int param = bound - 1;
-    for (int i = param; i > 0; i--) {
-	_xHelper(i, bound);
+}
+
+void reflection(unsigned int num) {
+    unsigned int i;
+    for (i = 0; i < num; i +=2) {
+        _refHelper(i, num);
+    }
+    for (i = 0; i < num; i++) {
+        cout << "#";
+    }
+
+    cout << endl;
+    for (i = num; i > 0; i -=2) {
+        _refHelper(i, num);
+    }
+}
+
+void _xHelper(unsigned int i, unsigned int bound) {
+    unsigned int j, spaces = 4 * (bound - 1) - 4 * i;
+
+    for (j = 0; j < i - 1; j++) {
+        cout << " ";
+    }
+
+    for (j = 0; j < i; j++) {
+        cout << "#";
+    }
+
+    for (j = 0; j < spaces; j++) {
+        cout << " ";
+    }
+
+    for (j = 0; j < i; j++) {
+        cout << "#";
+    }
+
+    for (j = 0; j < i - 1; j++) {
+        cout << " ";
+    }
+
+    cout << endl;
+}
+
+void X(unsigned int bound) {
+    unsigned int i;
+    for (i = 0; i < bound; i++) {
+        _xHelper(i, bound);
+    }
+    for (i = bound - 1; i > 0; i--) {
+        _xHelper(i, bound);
     }
 }
 
 bool valid_isbn(char num[13]) {
-    int sum = 0;
-    int digit;
-    for (int i = 0; i < 13; i++) {
-        digit = num[i] - 0x30;
+    unsigned int sum = 0, digit;
+    for (size_t i = 0; i < 13; i++) {
+        digit = num[i] - '0';
         if (digit < 0 || digit > 9) {
             cout << "Invalid number" << endl;
             return false;
         }
-        if (i%2 == 0) {
-            sum = sum + (num[i] - 0x30);
-        }
-        else {
-            sum = sum + 3 * (num[i] - 0x30);
-        }
+
+        sum += i % 2 == 0 ? num[i] - '0' : 3 * (num[i] - '0');
     }
-    if (sum % 10 == 0) {
-        return true;
-    } else {
-        return false;
-    }
+
+    return sum % 10 == 0;
 }
 
 void _decimalToBin(int num) {
     if (num == 0) {
         return;
-	return;
     }
     int digit = num % 2;
     _decimalToBin(num / 2);
@@ -108,9 +107,9 @@ int binToDecimal(char * bin) {
     while (bin[i] != '\0') {
       //cout << bin[i] << endl;
         //cout << bin[i] - '0' << endl;
-	num = 2 * num + (bin[i] - '0');
-	//cout << num << endl;
-	i++;
+    num = 2 * num + (bin[i] - '0');
+    //cout << num << endl;
+    i++;
     }
     return num;
 }
@@ -119,7 +118,7 @@ int binToDecimal(char * bin) {
 int convertCharToDigit(char c) {
     if (c >= '0' && c <= '9') {
         return c - '0';
-    } else if (c >= 'A' && c <= 'F') {
+    } else if (c >= 'A' && c <= 'Z') {
         return c - '7';
     } else {
         return -1;
@@ -175,8 +174,8 @@ binDecConversion() {
     choice = choice - '0';
     char * num;
     if (choice == 0) {
-	result = binToDecimal(choice);
-	cout << result;
+    result = binToDecimal(choice);
+    cout << result;
     }
     else if (choice == 1) {
     }
